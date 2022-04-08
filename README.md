@@ -3,10 +3,10 @@ Overview
 --------
 Kindle e-book reader comes with a function that allows to highlight parts of text while reading. These highlights or clippings, as Kindle refers to them, are saved to 'My clippings.txt' located in Kindle/documents. Each clipping is stored in the order it is added in such format:
 ```
-Confessions Diary of a Narcissist (Vaknin, Sam)
-- Your Highlight on page 66 | Location 1605-1606 | Added on Tuesday, April 5, 2022 11:10:35 AM
+Tropic of Cancer (Miller, Henry)
+- Your Highlight on page 1 | Location 398-399 | Added on Friday, January 28, 2022 3:53:48 PM
 
-Expropriating someone's childhood in favour of adult pursuits is one of the subtlest varieties of soul murder.
+I am living at the Villa Borghese. There is not a crumb of dirt anywhere, nor a chair misplaced. We are all alone here and we are dead.
 ==========
 ```
 Every clipping is added in this format, where Title is followed by Location | Time Stamp, an empty line, highlight, and breaker.
