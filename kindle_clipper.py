@@ -1,20 +1,27 @@
 from collections import namedtuple
 import re
 
+CLIPPING_END_INDICATOR = '==========\n'
 with open('My Clippings.txt', 'r', encoding='utf-8-sig') as user_clippings:
     #READ user's clippings file and SPLIT individual clippings
-    clippings = user_clippings.read().split('==========\n')
+    clippings = user_clippings.read().split(CLIPPING_END_INDICATOR)
     clippings.pop()
 
 #SPLIT UP each individual clipping into a namedtuple (Title, Highlight) stored in a list
 TITLE_AND_HIGHLIGHT = namedtuple('TITLE_AND_HIGHLIGHT', ['title', 'highlight'])
 split_clippings = []
 
+TITLE_INDEX = 0
+HIGHLIGHT_INDEX = 3
+BYTE_ORDER_MARK = '\ufeff'
+LINE_BREAK = '\n'
 for clipping in clippings:
-    temporary_list = clipping.replace('\ufeff', '').split('\n')
-    split_clippings.append(TITLE_AND_HIGHLIGHT(temporary_list[0], temporary_list[3]))
+    temporary_list = clipping.replace(BYTE_ORDER_MARK, '').split(LINE_BREAK)
+    split_clippings.append(TITLE_AND_HIGHLIGHT(temporary_list[TITLE_INDEX], temporary_list[HIGHLIGHT_INDEX]))
 
 sorted_clippings = {}
+PUNCTUATION = ' ,.”'
+SPACE = '\s'
 #SORT clipping highlights into WORDS and PARAGRAPHS and add them to according TITLE
 for clipping in split_clippings:
     
@@ -22,8 +29,8 @@ for clipping in split_clippings:
         sorted_clippings[clipping.title] = {'words':[], 
                                             'paragraphs':[]}
         
-    if len(re.findall('\s',clipping.highlight)) < 3:
-        sorted_clippings[clipping.title]['words'].append(clipping.highlight.lower().strip(' ,.”'))
+    if len(re.findall(SPACE,clipping.highlight)) < 3:
+        sorted_clippings[clipping.title]['words'].append(clipping.highlight.lower().strip(PUNCTUATION))
     else:
         sorted_clippings[clipping.title]['paragraphs'].append(clipping.highlight)
 
