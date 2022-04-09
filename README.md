@@ -28,7 +28,7 @@ paragraphs
 How it works
 ------------
 #### Reading the file  
-The script opens 'My clippings.txt' and splits individual clippings using the separator '==========\n', saving the resulting list of strings as *clippings*. Since the string we get from reading the original file ends with the character that we use to separate clippings, we end up with an empty string at the end of the list [..,  '']. Hence, that empty string is popped from the list on line 7.
+The script opens 'My clippings.txt' and splits individual clippings using the separator '==========\n', saving the resulting list of strings as *clippings*. Since the string we get from reading the original file ends with the character that we use to separate clippings, we end up with an empty string at the end of the list [..,  '']. Hence, that empty string is popped from the list on line 8.
 
 #### Sorting clippings  
 Then, a loop sorts through the list of strings where each string is an individual clipping, and splits each clipping into sub-parts. Only *title* and *highlight* are retained. They are saved as a pair inside a named tuple and appended to a new list called *split_clippings*. A temporary variable called *temporary_list* is used within the loop to transfer data.
